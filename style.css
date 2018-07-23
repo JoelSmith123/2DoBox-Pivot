@@ -2,8 +2,13 @@
     margin: 0;
 }
 
+body {
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
 .header-box {
-    background-color: #e5f3f2;
+    background-color: #dad2e2;
     box-sizing: border-box;
     height: 300px;
     margin: 0;
@@ -13,8 +18,8 @@
 }
 
 h1 {
-    color: #00a79d;
-    font-family: "Roboto Slab", serif;
+    color: #0e213a;
+    font-family: 'Quattrocento', serif;
     font-size:3em;
     margin-bottom: 30px;
     margin-top: 2rem;
@@ -24,7 +29,7 @@ h1 {
 input {
     align-items: center;
     display: flex;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1rem;
     justify-content: space-between;
     margin: auto;
@@ -34,11 +39,12 @@ input {
 }
 
 .header-text-highlight {
-    color: #6d6e71;
+    color: #ffffff;
 }
 
 .user-title-input {
-   /* font-size: 1rem;*/
+    background-color:    #ffffff;
+    font-size: 1rem;
    /* align-items: center;*/
    /* display: flex;*/
     height: 30px;
@@ -46,20 +52,29 @@ input {
     width: 45%;
 }
 
+.user-title-input:hover, .user-body-input:hover {
+    background-color:   #f7eeff;
+}
+.user-title-input:focus, .user-body-input:focus {
+    border: 3px solid #0e213a;
+}
+
+
 .user-body-input {
-    /*align-items: center;*/
+    font-family: 'Quattrocento Sans', sans-serif;
+    background-color: #ffffff;
     display: block;
-    /*font-size: 1rem;*/
     height: 30px;
     margin: 1.5rem auto 1.5rem;
     outline: none;
+    font-size: 1rem;
+    border: none;
     resize: none;
     width: 45%;
 }
 
 .user-search-input {
-    border: 10px solid magenta;
-    border-width: 0.2em;
+    border: 3px solid #0e213a;
     height: 30px;
     margin-top: 4rem;
     /*width: 45%;*/
@@ -67,16 +82,19 @@ input {
 
 .save-btn {
     display: block;
-    background-color: #00a79d;
+    background-color: #0e213a;
     color: #fff;
-    /*font-size: 1rem;*/
+    font-family: 'Quattrocento Sans', sans-serif;;
+    font-size: 1rem;
     height: 30px;
     margin: 0 auto; 
     width: 45%;   
+    transition: transform 0.2s ease-out;
 }
 
 .save-btn:hover {
-    background-color: #045e55;
+    transform: scale(1.2);
+    /*background-color: #045e55;*/
 }
 
 .bottom-box {
@@ -92,7 +110,7 @@ input {
 .title-of-card {
     color: #6D6E71;
     display: inline-block;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 1em;
 }
@@ -106,12 +124,12 @@ h2 {
 
 p {
     color: #939598;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .body-of-card {
     color: #939598;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Quattrocento', serif;
     font-size: 100%;
     margin-bottom: 1rem;
 }
