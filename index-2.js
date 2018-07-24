@@ -18,11 +18,30 @@ function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
          <button class="upvote"></button>
          <button class="downvote"></button>
          <span class="quality"><p class="quality">quality:${quality}</p></span>
+         <button class="completed">completed</button>
          <hr>
         </div>`
         saveIdea(ideaId, ideaTitle, ideaBody, quality='swill');
         newIdea.appendChild(newDiv);
 }
+
+// document.querySelector('.completed').addEventListener('click', strikeOut);
+
+// document.querySelector('.completed').addEventListener('click', function(){
+// if(event.target.className === 'user-title-input'){
+//     event.target.setAttribute('class','strike')
+// }})
+
+// });
+// function strikeOut(e) {
+//   e.preventDefault
+//   if (e.target.className === 'completed'){
+//   var body = document.querySelector('body-of-card')
+//   var title = document.querySelector('title-of-card')
+//   body.strike();
+//   title.strike();
+//   }
+// }
 
 function removeFromStorage (eventObj) {
   cardId = eventObj.path[1].attributes[1].nodeValue;
