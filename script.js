@@ -13,6 +13,7 @@ document.querySelector('.user-search-input').addEventListener('keyup', filterNam
 document.querySelector('.bottom-box').addEventListener('click', deleteItem);
 document.querySelector('.bottom-box').addEventListener('click', changeQualityUpVote);
 document.querySelector('.bottom-box').addEventListener('click', changeQualityDwnVote);
+
 document.querySelector('.bottom-box').addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
   if (key === 13){
