@@ -4,12 +4,8 @@ function appendList(e)  {
     var ideaTitle = document.querySelector('.user-title-input').value;
     var ideaBody = document.querySelector('.user-body-input').value;
     var newIdea = document.querySelector('.bottom-box');
-    // if (ideaTitle == 0 || ideaBody == 0) {
-    //     newIdea.innerText = null
-    // } else {
         addNewCard(ideaId, ideaTitle, ideaBody)
     }
-// }
 
 function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
   var newDiv = document.createElement('div');
@@ -21,37 +17,40 @@ function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
          <p class="body-of-card" contenteditable>${ideaBody}</p>
          <button class="upvote"></button>
          <button class="downvote"></button>
-         <span class="quality"><p>quality:${quality}</p></span>
+         <span class="quality"><p class="quality">quality:${quality}</p></span>
+         <button class="completed">completed</button>
          <hr>
         </div>`
         saveIdea(ideaId, ideaTitle, ideaBody, quality='swill');
         newIdea.appendChild(newDiv);
 }
 
-// function deleteItem(e) {
-//   if (e.target.className === 'delete-button') {
-//     var cardId = e.path[3].attributes[1].value
-//     removeFromStorage(cardId)
-//     e.target.parentNode.parentNode.parentNode.remove(document.querySelector('.bottom-box'));
+// document.querySelector('.completed').addEventListener('click', strikeOut);
+
+// document.querySelector('.completed').addEventListener('click', function(){
+// if(event.target.className === 'user-title-input'){
+//     event.target.setAttribute('class','strike')
+// }})
+
+// });
+// function strikeOut(e) {
+//   e.preventDefault
+//   if (e.target.className === 'completed'){
+//   var body = document.querySelector('body-of-card')
+//   var title = document.querySelector('title-of-card')
+//   body.strike();
+//   title.strike();
 //   }
 // }
 
-// function removeFromStorage(cardId){
-//   var cardId = e.path[3].attributes.parentNode.childNode.children.classList.dataset.value
-//   for(var key in localStorage){
-//     if(key == cardId){
-//       localStorage.removeItem(key)
-//     }
-//   }
-// }
-
-function removeFromStorage () {
- for(var key in window.localStorage){
-  var item = window.localStorage.removeItem(key);
+function removeFromStorage (eventObj) {
+  cardId = eventObj.path[1].attributes[1].nodeValue;
+  for(var key in window.localStorage){
+  if (key === cardId){
+    localStorage.removeItem(key);
+  }
  }
 }
-
-
 
 function clearOut() {
   var ideaTitle = document.querySelector('.user-title-input').value;
@@ -83,13 +82,10 @@ function filterNames() {
 }
 
 function saveIdea(ideaId, ideaTitle, ideaBody, quality='swill') {
-  var idea = new Idea(ideaId, ideaTitle, ideaBody, quality='swill');
-
-  // if (localStorage.getItem('idea') === null) {    
+  var idea = new Idea(ideaId, ideaTitle, ideaBody, quality='swill'); 
     localStorage.setItem(`${idea.id}`, JSON.stringify(idea));
     clearOut();
   }
-// }
 
 function editIdea(e) {
   var elementId = $(e.target).parent().data('name');
@@ -109,10 +105,8 @@ function refreshPage() {
   }
 };
 
-
 document.querySelector('.save-btn').addEventListener('click', appendList);
 document.querySelector('.user-search-input').addEventListener('keyup', filterNames);
-
 document.querySelector('.bottom-box').addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
   if (key === 13){
@@ -125,31 +119,35 @@ document.querySelector('.bottom-box').addEventListener('click', deleteItem);
 
 function deleteItem(e) {
     if (e.target.className === 'delete-button') {
-      // console.log(e)
-
         e.target.parentNode.parentNode.remove(document.querySelector('.card-container'));
-        removeFromStorage()
+        removeFromStorage(e)
     } 
 };
 
+document.querySelector('.bottom-box').addEventListener('click', changeQualityUpVote);
+document.querySelector('.bottom-box').addEventListener('click', changeQualityDwnVote);
 
-document.querySelector('.bottom-box').addEventListener('click', changeQualityUpVote)
-document.querySelector('.bottom-box').addEventListener('click', changeQualityDwnVote)
 function changeQualityUpVote() {
-    if (event.target.className === 'up-pic' && quality === 'swill') {
-    quality = "plausible";
-    document.querySelector('.quality-btn').innerText = "quality: plausible";
-  } else if (event.target.className === 'up-pic' && quality === 'plausible'){
+
+  var quality = document.querySelector('.quality').value;
+  console.log(event)
+
+    if (event.target.className === 'upvote' && quality === 'swill') {
+      console.log('is it working??????')
+     quality = 'plausible';
+     console.log(quality)
+    document.querySelector('.quality').innerText = "quality: plausible";
+  } else if (event.target.className === 'upvote' && quality === 'plausible'){
     quality = "genuis";
-    document.querySelector('.quality-btn').innerText = "quality: genuis";
+    document.querySelector('.quality').innerText = "quality: genuis";
   }
     }
 function changeQualityDwnVote() {
- if (event.target.className === 'down-pic' && quality === 'genuis') {
-    quality = "plausible";
-    document.querySelector('.quality-btn').innerText = "quality: plausible";
-  } else if (event.target.className === 'down-pic' && quality === 'plausible'){
+ if (event.target.className === 'downvote' && quality === 'genuis') {
+    var quality = "plausible";
+    document.querySelector('.quality').innerText = "quality: plausible";
+  } else if (event.target.className === 'downvote' && quality === 'plausible'){
     quality = "swill";
-    document.querySelector('.quality-btn').innerText = "quality: swill";
+    document.querySelector('.quality').innerText = "quality: swill";
   }
     }
