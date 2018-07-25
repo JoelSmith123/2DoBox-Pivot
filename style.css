@@ -4,8 +4,8 @@
 }
 
 body {
-    box-sizing: border-box;
     background-color: #efefef;
+    box-sizing: border-box;
 }
 
 .header-box {
@@ -27,6 +27,7 @@ h1 {
 
 input {
     align-items: center;
+    border: none;
     display: flex;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1rem;
@@ -34,7 +35,6 @@ input {
     margin: auto;
     outline: none;
     width: 45%;
-    border: none;
 }
 
 .header-text-highlight {
@@ -57,28 +57,28 @@ input {
 }
 
 .user-body-input {
-    font-family: 'Quattrocento Sans', sans-serif;
     background-color: #ffffff;
+    border: none;
     display: block;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1rem;
     height: 30px;
     margin: 1rem auto 1rem;
     outline: none;
-    font-size: 1rem;
-    border: none;
     resize: none;
     width: 45%;
 }
 
 .save-btn {
-    display: block;
     background-color: #0e213a;
     color: #fff;
+    display: block;
     font-family: 'Quattrocento Sans', sans-serif;;
     font-size: 1rem;
     height: 30px;
-    margin: 0 auto 2rem; 
-    width: 45%;   
+    margin: 0 auto 2rem;   
     transition: transform 0.2s ease-out;
+    width: 45%;   
 }
 
 .save-btn:disabled {
@@ -124,10 +124,10 @@ input {
 }
 
 h2 {
-    margin-top: 1rem;
     color: #6d6e71; 
     display: inline-block;
     font-size: 2rem;
+    margin-top: 1rem;
 }
 
 p {
@@ -208,31 +208,23 @@ button {
         height: 5em;
     }
 
-    .bottom-box {
-        margin-top: 0;
-    }
-    
-    .card-container {
-        width: 80%;
-    }
-    
-    .user-search-input {
-        margin-top: 22.5em;
-        width: 80%;
-        left: 50%;
-        transform: translateX(-11%);
-    }
-
-/*    .user-search-input {
-    position: sticky;
-    border: 3px solid #0e213a;
-    height: 30px;
-    left: 50%;
-    top: 10px;
-    margin: 19.5rem auto 4rem;
-    transform: translateX(-50%);
-}*/
-    
-
+.header-box {
+    height: 350px
 }
-
+  
+.card-container {
+    width: 80%;
+}
+    
+  .user-search-input {
+      border: solid #999 1px;
+      margin-top: 22.5em;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-11%);
+  }
+  
+  .bottom-box {
+      margin-top: 30rem;
+  }
+}

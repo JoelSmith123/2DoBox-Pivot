@@ -1,12 +1,3 @@
-// ===============================================
-// GLOBAL VARIABLES
-// ===============================================
-
-
-
-// ===============================================
-// EVENT LISTENERS
-// ===============================================
 document.addEventListener("DOMContentLoaded", refreshPage);
 document.querySelector('.save-btn').addEventListener('click', appendList);
 document.querySelector('.user-search-input').addEventListener('keyup', filterNames);
@@ -15,7 +6,6 @@ document.querySelector('.bottom-box').addEventListener('click', changeQualityUpV
 document.querySelector('.bottom-box').addEventListener('click', changeQualityDwnVote);
 document.querySelector('.user-title-input').addEventListener('keyup', enterDisable);
 document.querySelector('.user-body-input').addEventListener('keyup', enterDisable);
-
 document.querySelector('.bottom-box').addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
   if (key === 13){
@@ -23,9 +13,6 @@ document.querySelector('.bottom-box').addEventListener('keyup', function(e) {
   }
 });
 
-// ===============================================
-// FUNCTIONS
-// ===============================================
 function Idea(id, title, idea, quality) {
   this.id = id;
   this.title = title;
@@ -87,26 +74,10 @@ function clearOut() {
   document.querySelector('form').reset();
 }
 
-// function filterNames() {
-//   var filterInput = document.querySelector('.user-search-input');
-//   var filterValue = filterInput.value.toUpperCase();
-//   var section = document.querySelector('.bottom-box');
-//   var card = section.querySelectorAll('.card-container');
-//   for (var i = 0; i < card.length; i++) {
-//     var title = card[i].getElementsByTagName('h2')[0];
-//     if (title.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-//       card[i].style.display = '';      
-//     } else {
-//         card[i].style.display = 'none';
-//       }
-//     }
-// }
-
 function filterNames() {
   var filterInput = document.querySelector('.user-search-input');
   var filterValue = filterInput.value;
   var section = document.querySelector('.bottom-box');
-
   if (filterValue === "") {
     $(".card-container").show();
   } else {
@@ -116,7 +87,6 @@ function filterNames() {
     $("p.body-of-card:contains(" + filterValue + ")").parent().show();
   };
 };
-
 
 function editIdea(e) {
   var elementId = $(e.target).parent().data('name');
@@ -197,36 +167,3 @@ $('.bottom-link').click(function () {
   $("html, body").animate({scrollTop: 0}, 1000);
 })  
 
-
-    // document.querySelector('.bottom-box').addEventListener('click', strikeOut);
-
-// document.querySelector('.completed').addEventListener('click', function(){
-// if(event.target.className === 'user-title-input'){
-//     event.target.setAttribute('class','strike')
-// }})
-
-// });
-
-// function greyOut() {
-//     if (event.target.className === 'title-of-card' || event.target.className === 'greyed title-of-card') {
-//         // event.target.parentNode.classList.toggle('read-button')
-//         event.target.classList.toggle('new-button')
-//     }
-// }
-// function myFunction() {
-//     var str = "Hello World!";
-//     var result = str.strike();
-//     document.getElementById("demo").innerHTML = result;
-// }
-
-// function strikeOut(e) {
-//   e.preventDefault
-//   if (e.target.className === 'completed'){
-//   var body = document.querySelector('.body-of-card')
-//   var title = document.querySelector('.title-of-card')
-//   var strike = body.strike();
-//   var strike2 = title.strike();
-//   // document.querySelector('.body-of-card').innerHTML = strike;
-//   // document.querySelector('.title-of-card').innerHTML = strike2;
-//   }
-// }
