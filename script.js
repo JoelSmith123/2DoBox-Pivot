@@ -21,13 +21,13 @@ function Idea(id, title, idea, quality) {
 }
 
 function appendList(e)  {
-    e.preventDefault();
-    var ideaId = Date.now();
-    var ideaTitle = document.querySelector('.user-title-input').value;
-    var ideaBody = document.querySelector('.user-body-input').value;
-    var newIdea = document.querySelector('.bottom-box');
-        addNewCard(ideaId, ideaTitle, ideaBody)
-    }
+  e.preventDefault();
+  var ideaId = Date.now();
+  var ideaTitle = document.querySelector('.user-title-input').value;
+  var ideaBody = document.querySelector('.user-body-input').value;
+  var newIdea = document.querySelector('.bottom-box');
+    addNewCard(ideaId, ideaTitle, ideaBody)
+  }
 
 function addNewCard(ideaId, ideaTitle, ideaBody, quality='none'){
   var newDiv = document.createElement('div');
@@ -54,10 +54,10 @@ function saveIdea(ideaId, ideaTitle, ideaBody, quality='none') {
   }
 
 function deleteItem(e) {
-    if (e.target.className === 'delete-button') {
-        e.target.parentNode.parentNode.remove(document.querySelector('.card-container'));
-        removeFromStorage(e)
-    } 
+  if (e.target.className === 'delete-button') {
+      e.target.parentNode.parentNode.remove(document.querySelector('.card-container'));
+      removeFromStorage(e)
+  } 
 };
 
 function removeFromStorage (eventObj) {
@@ -166,4 +166,3 @@ function enterDisable() {
 $('.bottom-link').click(function () {
   $("html, body").animate({scrollTop: 0}, 1000);
 })  
-
