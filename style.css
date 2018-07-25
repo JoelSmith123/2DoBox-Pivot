@@ -5,13 +5,12 @@
 
 body {
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: #efefef;
 }
 
 .header-box {
+    display: block;
     background-color: #dad2e2;
-    box-sizing: border-box;
-    height: 300px;
     margin: 0;
     position: absolute;
     top: 0;
@@ -22,8 +21,7 @@ h1 {
     color: #0e213a;
     font-family: 'Quattrocento', serif;
     font-size:3em;
-    margin-bottom: 30px;
-    margin-top: 2rem;
+    margin: 2rem auto;
     text-align: center;
 }
 
@@ -63,18 +61,12 @@ input {
     background-color: #ffffff;
     display: block;
     height: 30px;
-    margin: 1.5rem auto 1.5rem;
+    margin: 1rem auto 1rem;
     outline: none;
     font-size: 1rem;
     border: none;
     resize: none;
     width: 45%;
-}
-
-.user-search-input {
-    border: 3px solid #0e213a;
-    height: 30px;
-    margin-top: 4rem;
 }
 
 .save-btn {
@@ -84,7 +76,7 @@ input {
     font-family: 'Quattrocento Sans', sans-serif;;
     font-size: 1rem;
     height: 30px;
-    margin: 0 auto; 
+    margin: 0 auto 2rem; 
     width: 45%;   
     transition: transform 0.2s ease-out;
 }
@@ -97,12 +89,28 @@ input {
     transform: scale(1.2);
 }
 
+.user-search-input {
+    position: sticky;
+    border: 3px solid #0e213a;
+    height: 30px;
+    left: 50%;
+    top: 10px;
+    margin: 19.5rem auto 4rem;
+    transform: translateX(-50%);
+}
+
 .bottom-box {
-    margin-top: 25rem;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
 }
 
 .card-container {
+    box-sizing: border-box;
+    border: 3px solid #0e213a;
+    background-color: #fff;
     margin: auto;
+    margin-bottom: 3rem;
+    padding: 1rem;
     position: relative;
     width: 45%;
 }
@@ -146,7 +154,7 @@ button {
     background-image: url(./images/delete.svg);
     margin-bottom: 1em;
     position: absolute;
-    right: 10px;
+    right: 14px;
     top: 15px;
 }
 
@@ -177,19 +185,31 @@ button {
     margin: 1em 0 
 }
 
+.bottom-link {
+    cursor: pointer;
+    display: block;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.bottom-link:hover {
+    color: #0e213a;
+}
 
 @media only screen and (max-width: 640px){
 
-    .header-box {
-        height: 350px
-    }
-    
-    .user-body-input, .user-title-input, .save-btn {
+    .user-body-input, .user-title-input, .user-search-input, .save-btn {
         width: 80%;
     }
     
     .user-body-input{
         height: 5em;
+    }
+
+    .bottom-box {
+        margin-top: 0;
     }
     
     .card-container {
@@ -197,12 +217,22 @@ button {
     }
     
     .user-search-input {
-        border: solid #999 1px;
+        margin-top: 22.5em;
         width: 80%;
-    }
-    
-    .bottom-box {
-        margin-top: 30rem;
+        left: 50%;
+        transform: translateX(-11%);
     }
 
+/*    .user-search-input {
+    position: sticky;
+    border: 3px solid #0e213a;
+    height: 30px;
+    left: 50%;
+    top: 10px;
+    margin: 19.5rem auto 4rem;
+    transform: translateX(-50%);
+}*/
+    
+
 }
+
