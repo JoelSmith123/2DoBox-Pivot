@@ -17,7 +17,7 @@ function Idea(id, title, idea, quality) {
   this.id = id;
   this.title = title;
   this.idea = idea;
-  this.quality = 'swill';
+  this.quality = 'none';
 }
 
 function appendList(e)  {
@@ -29,7 +29,7 @@ function appendList(e)  {
         addNewCard(ideaId, ideaTitle, ideaBody)
     }
 
-function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
+function addNewCard(ideaId, ideaTitle, ideaBody, quality='none'){
   var newDiv = document.createElement('div');
   var newIdea = document.querySelector('.bottom-box');
   newDiv.innerHTML =
@@ -42,13 +42,14 @@ function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
          <span class="quality"><p class="quality quality-text">quality:${quality}</p></span>
          <hr>
         </div>`
-        saveIdea(ideaId, ideaTitle, ideaBody, quality='swill');
+        saveIdea(ideaId, ideaTitle, ideaBody, quality='none');
         newIdea.appendChild(newDiv);
         clearOut();
+        enterDisable();
 }
 
-function saveIdea(ideaId, ideaTitle, ideaBody, quality='swill') {
-  var idea = new Idea(ideaId, ideaTitle, ideaBody, quality='swill'); 
+function saveIdea(ideaId, ideaTitle, ideaBody, quality='none') {
+  var idea = new Idea(ideaId, ideaTitle, ideaBody, quality='none'); 
     localStorage.setItem(`${idea.id}`, JSON.stringify(idea));
   }
 
@@ -104,36 +105,52 @@ function refreshPage() {
 }; 
 
 function changeQualityUpVote(event) {
-  if (event.target.className === 'upvote') {
-    var key = event.path[1].dataset.name;
-    var cardObj = JSON.parse(localStorage.getItem(key));
-    if (cardObj.quality === 'swill') {
-      cardObj.quality = 'plausible';
-      localStorage.setItem(key, JSON.stringify(cardObj));
-      event.target.parentNode.children[5].childNodes[0].innerText = 'quality: plausible';
-    } else if (cardObj.quality === 'plausible'){
-      cardObj.quality = "genuis";
-      localStorage.setItem(key, JSON.stringify(cardObj));
-      event.target.parentNode.children[5].childNodes[0].innerText = 'quality: genuis';
-    }
-  }
+ if (event.target.className === 'upvote') {
+   var key = event.path[1].dataset.name;
+   var cardObj = JSON.parse(localStorage.getItem(key));
+   if (cardObj.quality === 'none') {
+     cardObj.quality = 'low';
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: low';
+   } else if (cardObj.quality === 'low'){
+     cardObj.quality = "normal";
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: normal';
+   } else if  (cardObj.quality === 'normal'){
+     cardObj.quality = "high";
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: high';
+   } else if  (cardObj.quality === 'high'){
+     cardObj.quality = "critical";
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: critical';
+   }
+ }
 }
 
 function changeQualityDwnVote(event) {
-  if (event.target.className === 'downvote') {
-    var key = event.path[1].dataset.name;
-    var cardObj = JSON.parse(localStorage.getItem(key));
-    if (cardObj.quality === 'genuis') {
-      cardObj.quality = 'plausible';
-      localStorage.setItem(key, JSON.stringify(cardObj));
-      event.target.parentNode.children[5].childNodes[0].innerText = 'quality: plausible';
-    }  else if (cardObj.quality === 'plausible') {
-      cardObj.quality = 'swill';
-      localStorage.setItem(key, JSON.stringify(cardObj));
-      event.target.parentNode.children[5].childNodes[0].innerText = 'quality: swill';
-    } 
-  }
-} 
+ if (event.target.className === 'downvote') {
+   var key = event.path[1].dataset.name;
+   var cardObj = JSON.parse(localStorage.getItem(key));
+   if (cardObj.quality === 'critical') {
+     cardObj.quality = 'high';
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: high';
+   }  else if (cardObj.quality === 'high') {
+     cardObj.quality = 'normal';
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: normal';
+   } else if (cardObj.quality === 'normal') {
+     cardObj.quality = 'low';
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: low';
+   } else if (cardObj.quality === 'low') {
+     cardObj.quality = 'none';
+     localStorage.setItem(key, JSON.stringify(cardObj));
+     event.target.parentNode.children[5].childNodes[0].innerText = 'quality: none';
+   }
+ }
+}
 
 function enterDisable() {
  var saveBtn = document.querySelector('.save-btn');
@@ -143,4 +160,10 @@ function enterDisable() {
   } else {
    saveBtn.disabled = true;
  }  
-}  
+
+}
+
+$('.bottom-link').click(function () {
+  $("html, body").animate({scrollTop: 0}, 1000);
+})  
+
