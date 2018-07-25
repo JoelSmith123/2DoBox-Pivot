@@ -13,6 +13,8 @@ document.querySelector('.user-search-input').addEventListener('keyup', filterNam
 document.querySelector('.bottom-box').addEventListener('click', deleteItem);
 document.querySelector('.bottom-box').addEventListener('click', changeQualityUpVote);
 document.querySelector('.bottom-box').addEventListener('click', changeQualityDwnVote);
+document.querySelector('.user-title-input').addEventListener('keyup', enterDisable);
+document.querySelector('.user-body-input').addEventListener('keyup', enterDisable);
 
 document.querySelector('.bottom-box').addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
@@ -56,12 +58,12 @@ function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
         </div>`
         saveIdea(ideaId, ideaTitle, ideaBody, quality='swill');
         newIdea.appendChild(newDiv);
+        clearOut();
 }
 
 function saveIdea(ideaId, ideaTitle, ideaBody, quality='swill') {
   var idea = new Idea(ideaId, ideaTitle, ideaBody, quality='swill'); 
     localStorage.setItem(`${idea.id}`, JSON.stringify(idea));
-    clearOut();
   }
 
 function deleteItem(e) {
@@ -82,10 +84,7 @@ function removeFromStorage (eventObj) {
 }
 
 function clearOut() {
-  var ideaTitle = document.querySelector('.user-title-input').value;
-  var ideaBody = document.querySelector('.user-body-input').value;
-  ideaTitle.value = '';
-  ideaBody.value = '';
+  document.querySelector('form').reset();
 }
 
 // function filterNames() {
@@ -107,17 +106,14 @@ function filterNames() {
   var filterInput = document.querySelector('.user-search-input');
   var filterValue = filterInput.value;
   var section = document.querySelector('.bottom-box');
-  var card = section.querySelectorAll('.card-container');
-  var body = section.querySelectorAll('.body-of-card');
 
   if (filterValue === "") {
-    $("card").show();
-    console.log("wow");
+    $(".card-container").show();
   } else {
-    $(".body-of-card:not(\":contains(" + filterValue + ")\")").parent().hide();
-    $(".body-of-card:contains(" + filterValue + ")").parent().show();
-    $("h2:not(\":contains(" + filterValue + ")\")").parent().hide();
-    $("h2:contains(" + filterValue + ")").parent().show();
+    $("h2.title-of-card:not(\":contains(" + filterValue + ")\")").parent().hide();
+    $("p.body-of-card:not(\":contains(" + filterValue + ")\")").parent().hide();
+    $("h2.title-of-card:contains(" + filterValue + ")").parent().show();
+    $("p.body-of-card:contains(" + filterValue + ")").parent().show();
   };
 };
 
@@ -168,7 +164,18 @@ function changeQualityDwnVote(event) {
       event.target.parentNode.children[5].childNodes[0].innerText = 'quality: swill';
     } 
   }
-}   
+} 
+
+function enterDisable() {
+ var saveBtn = document.querySelector('.save-btn');
+ if (document.querySelector('.user-title-input').value
+     && document.querySelector('.user-body-input').value) {
+      saveBtn.disabled = false;
+  } else {
+   saveBtn.disabled = true;
+ }  
+
+}  
 
 
     // document.querySelector('.bottom-box').addEventListener('click', strikeOut);
