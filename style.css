@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     outline: none;
 }
@@ -46,20 +46,17 @@ input {
 .user-title-input {
     background-color:    #ffffff;
     font-size: 1rem;
-   /* align-items: center;*/
-   /* display: flex;*/
     height: 30px;
- /*   justify-content: space-between;*/
     width: 45%;
 }
 
 .user-title-input:hover, .user-body-input:hover {
     background-color:   #f7eeff;
 }
+
 .user-title-input:focus, .user-body-input:focus {
     border: 3px solid #0e213a;
 }
-
 
 .user-body-input {
     font-family: 'Quattrocento Sans', sans-serif;
@@ -78,7 +75,6 @@ input {
     border: 3px solid #0e213a;
     height: 30px;
     margin-top: 4rem;
-    /*width: 45%;*/
 }
 
 .save-btn {
@@ -93,9 +89,12 @@ input {
     transition: transform 0.2s ease-out;
 }
 
-.save-btn:hover {
+.save-btn:disabled {
+   background-color: #86888A;
+}
+
+.save-btn:hover:enabled {
     transform: scale(1.2);
-    /*background-color: #045e55;*/
 }
 
 .bottom-box {
@@ -117,10 +116,10 @@ input {
 }
 
 h2 {
-   color: #6d6e71; 
-   display: inline-block;
- /*  font-family: 'Roboto Slab', serif;*/
-   font-size: 2rem;
+    margin-top: 1rem;
+    color: #6d6e71; 
+    display: inline-block;
+    font-size: 2rem;
 }
 
 p {
@@ -153,40 +152,25 @@ button {
 
 .delete-button:hover {
     background-image: url(./images/delete-hover.svg);
-    /*background-size: cover;*/
-    /*height: 20px;*/
-    /*width: 20px;*/
 }
 
 .upvote {
     background-image: url(./images/upvote.svg);
-    /*background-size: cover;*/
-    /*height: 20px;*/
     margin-right: 5px; 
-    /*width: 20px;*/
 }
 
 .upvote:hover {
     background-color: transparent;
     background-image: url(./images/upvote-hover.svg);
-    /*background-size: cover;*/
-    /*height: 20px;*/
-    /*width: 20px;*/
 }
 
 .downvote {
     background-image: url(./images/downvote.svg);
-    /*background-size: cover;*/
-    /*height: 20px;*/
     margin-right: 5px; 
-    /*width: 20px;*/
 }
 
 .downvote:hover {
     background-image: url(./images/downvote-hover.svg);
-    /*background-size: cover;*/
-    /*height: 20px;*/
-    /*width: 20px;*/
 }
 
 .quality {
@@ -196,30 +180,29 @@ button {
 
 @media only screen and (max-width: 640px){
 
-.header-box {
-    height: 350px
-}
-
-.user-body-input, .user-title-input, .save-btn {
-    width: 80%;
-}
-
-.user-body-input{
-    height: 5em;
-}
-
-.card-container {
+    .header-box {
+        height: 350px
+    }
+    
+    .user-body-input, .user-title-input, .save-btn {
         width: 80%;
     }
-
-.user-search-input {
+    
+    .user-body-input{
+        height: 5em;
+    }
+    
+    .card-container {
+        width: 80%;
+    }
+    
+    .user-search-input {
         border: solid #999 1px;
         width: 80%;
     }
+    
+    .bottom-box {
+        margin-top: 30rem;
+    }
 
-.bottom-box {
-    margin-top: 30rem;
 }
-
-}
-
