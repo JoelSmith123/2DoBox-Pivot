@@ -9,8 +9,8 @@ body {
 }
 
 .header-box {
-    display: block;
     background-color: #dad2e2;
+    display: block;
     margin: 0;
     position: absolute;
     top: 0;
@@ -90,12 +90,12 @@ input {
 }
 
 .user-search-input {
-    position: sticky;
     border: 3px solid #0e213a;
     height: 30px;
     left: 50%;
-    top: 10px;
     margin: 19.5rem auto 4rem;
+    position: sticky;
+    top: 10px;
     transform: translateX(-50%);
 }
 
@@ -105,11 +105,11 @@ input {
 }
 
 .card-container {
-    box-sizing: border-box;
-    border: 3px solid #0e213a;
     background-color: #fff;
-    margin: auto;
+    border: 3px solid #0e213a;
+    box-sizing: border-box;
     margin-bottom: 3rem;
+    margin: auto;
     padding: 1rem;
     position: relative;
     width: 45%;
@@ -190,8 +190,8 @@ button {
     display: block;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1em;
-    text-align: center;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .bottom-link:hover {
@@ -200,13 +200,13 @@ button {
 
 @media only screen and (max-width: 640px){
 
-    .user-body-input, .user-title-input, .user-search-input, .save-btn {
+.user-body-input, .user-title-input, .user-search-input, .save-btn {
         width: 80%;
-    }
+}
     
-    .user-body-input{
+.user-body-input{
         height: 5em;
-    }
+}
 
 .header-box {
     height: 350px
@@ -216,15 +216,15 @@ button {
     width: 80%;
 }
     
-  .user-search-input {
-      border: solid #999 1px;
-      margin-top: 22.5em;
-      width: 80%;
-      left: 50%;
-      transform: translateX(-11%);
-  }
+.user-search-input {
+    border: solid #999 1px;
+    margin-top: 22.5em;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-11%);
+}
   
-  .bottom-box {
-      margin-top: 30rem;
-  }
+.bottom-box {
+    margin-top: 30rem;
+}
 }
