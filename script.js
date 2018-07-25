@@ -88,20 +88,39 @@ function clearOut() {
   ideaBody.value = '';
 }
 
+// function filterNames() {
+//   var filterInput = document.querySelector('.user-search-input');
+//   var filterValue = filterInput.value.toUpperCase();
+//   var section = document.querySelector('.bottom-box');
+//   var card = section.querySelectorAll('.card-container');
+//   for (var i = 0; i < card.length; i++) {
+//     var title = card[i].getElementsByTagName('h2')[0];
+//     if (title.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+//       card[i].style.display = '';      
+//     } else {
+//         card[i].style.display = 'none';
+//       }
+//     }
+// }
+
 function filterNames() {
   var filterInput = document.querySelector('.user-search-input');
-  var filterValue = filterInput.value.toUpperCase();
+  var filterValue = filterInput.value;
   var section = document.querySelector('.bottom-box');
   var card = section.querySelectorAll('.card-container');
-  for (var i = 0; i < card.length; i++) {
-    var title = card[i].getElementsByTagName('h2')[0];
-    if (title.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-      card[i].style.display = '';      
-    } else {
-        card[i].style.display = 'none';
-      }
-    }
-}
+  var body = section.querySelectorAll('.body-of-card');
+
+  if (filterValue === "") {
+    $("card").show();
+    console.log("wow");
+  } else {
+    $(".body-of-card:not(\":contains(" + filterValue + ")\")").parent().hide();
+    $(".body-of-card:contains(" + filterValue + ")").parent().show();
+    $("h2:not(\":contains(" + filterValue + ")\")").parent().hide();
+    $("h2:contains(" + filterValue + ")").parent().show();
+  };
+};
+
 
 function editIdea(e) {
   var elementId = $(e.target).parent().data('name');
